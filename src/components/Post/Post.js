@@ -36,7 +36,8 @@ export default class Post extends Component {
     this.setState({ editing: false });
   }
 
-  // This toggles the drop-down when the three dots in the top right corner of a post are clicked
+  // This toggles the drop-down when the three dots in the top right corner of a post
+  // are clicked
   toggleMasterMenu() {
     this.setState({ showMasterMenu: !this.state.showMasterMenu });
   }

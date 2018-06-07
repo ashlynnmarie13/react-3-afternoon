@@ -11,7 +11,6 @@ export default class Edit extends Component {
     this.state = {
       text: props.text
     };
-    this.updatePostFn = this.updatePostFn.bind(this);
     this.updatePost = this.updatePost.bind(this);
   }
 

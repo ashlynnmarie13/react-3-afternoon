@@ -24,12 +24,15 @@ class App extends Component {
   // making a GET request, returns an array of post objects
   // ??WHAT IS RESULTS.DATA?
   // WHY DO ONLY SOME NEED THE ID? OR TEXT?
+  // ".then" an object that's gonna get you info when it can
   componentDidMount() {
     axios.get("https://practiceapi.devmountain.com/api/posts").then(results => {
       this.setState({ posts: results.data });
+      console.log(results);
     });
   }
-  //where did I get the link below???????
+  //putting the info from the link into your shit
+  //
   updatePost(id, text) {
     axios
       .put(`https://practiceapi.devmountain.com/api/posts?id=${id}`, { text })
