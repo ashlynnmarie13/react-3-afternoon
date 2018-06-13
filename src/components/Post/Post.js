@@ -63,57 +63,44 @@ export default class Post extends Component {
         <div className="Post__master-controls">
           <MasterControlIcon onClick={this.toggleMasterMenu} />
 
-          {/* Drop-down menu. Remember that the "showMasterMenu" variable has been destructured off of this.state */}
           <div
             className="Post__master-menu"
             style={{ display: showMasterMenu ? "flex" : "none" }}
           >
             <span onClick={this.showEdit}>Edit</span>
-            <span onClick={() => deletePostFn(id)}>Delete</span>
-          </div>
-        </div>
-
-        {/* This is where all the meta data of the post will go (who, when, where) 
-        WHY IS THERE JUST THE DATE AND TEXT AND NOT PROPS.DATE???*/}
-        <div className="Post__meta-data">
-          <div className="Post__profile-picture">
-            <ProfileIcon />
+            <span onClick={() => deletePostFn(id)}>Delete</span>{" "}
+            {/* Remember to destructure deletePostFn off of props or use this.props.deletePostFn */}
           </div>
 
-          <span className="Post__name">DevMountain</span>
-          <span className="Post__handle">@DevMountain</span>
+          <div className="Post__meta-data">
+            <div className="Post__profile-picture">
+              <ProfileIcon />
+            </div>
 
-          <span className="Post__date">{date}</span>
-        </div>
+            <span className="Post__name">DevMountain</span>
+            <span className="Post__handle">@DevMountain</span>
 
-        {/* This is where the text goes. Notice the turnary statement. The turnary statement decides to display either the text OR the editor view
-            You can also think of it as being written as so:
-              if( this.state.editing === true ) {
-                <Edit ... />
-              } else {
-                <span ... ></span>
-              }
-        */}
-        <div className="Post__content">
-          {// This has been pulled off of this.state via destructuring
-          // WHAT'S WITH THE COLON????
-          // why is it "this.hideEdit?"
-          editing ? (
-            <Edit
-              text={text}
-              hideEdit={this.hideEdit}
-              updatePostFn={updatePostFn}
-            />
-          ) : (
-            <span className="Post__text">{text}</span>
-          )}
-        </div>
+            <span className="Post__date">{date}</span>
+          </div>
 
-        {/* These are all of the cute little icons in the bottom left corner */}
-        <div className="Post__user-controls">
-          <ReplyIcon className="Post__control-icon" />
-          <FavoriteIcon className="Post__control-icon" />
-          <MessageIcon className="Post__control-icon" />
+          <div className="Post__content">
+            {" "}
+            {editing ? (
+              <Edit
+                text={text}
+                id={id}
+                hideEdit={this.hideEdit}
+                updatePostFn={updatePostFn}
+              />
+            ) : (
+              <span className="Post__text">{text}</span>
+            )}
+          </div>
+          <div className="Post__user-controls">
+            <ReplyIcon className="Post__control-icon" />
+            <FavoriteIcon className="Post__control-icon" />
+            <MessageIcon className="Post__control-icon" />
+          </div>
         </div>
       </section>
     );
